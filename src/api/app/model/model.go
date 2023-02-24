@@ -1,7 +1,7 @@
 package model
 
 import (
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 )
 
 // this is how the db will be modeled
@@ -16,7 +16,7 @@ type User struct {
 	Password string `gorm:"not null; size:25"`
 }
 
-func migrateDB(db *gorm.DB) *gorm.DB {
+func MigrateDB(db *gorm.DB) *gorm.DB {
 	//format db to replicate user struct
 	err := db.AutoMigrate(&User{})
 	if err != nil {
