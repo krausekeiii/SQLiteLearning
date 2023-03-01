@@ -36,12 +36,12 @@ func (a *App) Initialize() {
 func (a *App) setRouters() {
 	// Routing for handling the projects
 	a.Get("/users", a.GetAllUsers)
-	a.Post("/users", a.CreateUser)
-	//a.Get("/users/{title}", a.GetUser)
+	a.Post("/users", a.SignUp)
+	a.Get("/users/{title}", a.Signin)
 	//a.Put("/users/{title}", a.UpdateUser)
-	//a.Delete("/users/{title}", a.DeleteEmployee)
-	//a.Put("/users/{title}/disable", a.DisableEmployee)
-	//a.Put("/users/{title}/enable", a.EnableEmployee)
+	//a.Delete("/users/{title}", a.DeleteUser)
+	//a.Put("/users/{title}/disable", a.DisableUser)
+	//a.Put("/users/{title}/enable", a.EnableUser)
 }
 
 // Wrap the router for GET method
@@ -68,15 +68,17 @@ func (a *App) GetAllUsers(w http.ResponseWriter, r *http.Request) {
 	handler.GetAllUsers(a.db, w, r)
 }
 
-func (a *App) CreateUser(w http.ResponseWriter, r *http.Request) {
+// use for signup functionality
+func (a *App) SignUp(w http.ResponseWriter, r *http.Request) {
 	handler.CreateUser(a.db, w, r)
 }
 
-/*func (a *App) GetUser(w http.ResponseWriter, r *http.Request) {
-
+// use for signin functionality
+func (a *App) Signin(w http.ResponseWriter, r *http.Request) {
+	handler.GetUser(a.db, w, r)
 }
 
-func (a *App) UpdateUser(w http.ResponseWriter, r *http.Request) {
+/*func (a *App) UpdateUser(w http.ResponseWriter, r *http.Request) {
 
 }*/
 
